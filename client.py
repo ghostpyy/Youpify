@@ -28,7 +28,7 @@ class Client:
 
     def _auth(self):
         if self._client_id is None:
-            return False
+            exit(1)
         token_url = "https://accounts.spotify.com/api/token"
         token_data = {
             "grant_type": "client_credentials"
