@@ -12,7 +12,7 @@ class Client:
     access_token_expires = datetime.datetime.now()
     access_token_isExpired = True
 
-    def __init__(self, client_id, client_secret):
+    def __init__(self, client_id: str, client_secret: str):
         self.client_id = client_id
         self.client_secret = client_secret
         creds = f"{client_id}:{client_secret}"
@@ -35,7 +35,7 @@ class Client:
         }
         r = requests.post(token_url, data=token_data, headers=token_header)
         data = r.json()
-        print(data)
+        # print(data)
         if r.status_code not in range(200, 299):
             print("auth error")
             return False
