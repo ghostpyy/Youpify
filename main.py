@@ -8,8 +8,8 @@ def main():
     f.close()
     # print(client_id, client_secret)
     test_client = client.Client(client_id, client_secret)
-    test_client.get_access_token()
-    # print(test_client.access_token)
+    token = test_client.get_access_token()
+    # print(token)
 
 
 if __name__ == '__main__':

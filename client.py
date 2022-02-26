@@ -7,10 +7,8 @@ class Client:
     client_id = None
     client_secret = None
     client_creds_b64 = None
-
     access_token = None
     access_token_expires = datetime.datetime.now()
-    access_token_isExpired = True
 
     def __init__(self, client_id: str, client_secret: str):
         self.client_id = client_id
@@ -18,12 +16,16 @@ class Client:
         creds = f"{client_id}:{client_secret}"
         self.client_creds_b64 = base64.b64encode(creds.encode())
 
-    def check_expiry(self):
+    def check_access_token_expiry(self):
         now = datetime.datetime.now()
-        self.access_token_isExpired = self.access_token_expires < now
-        return self.access_token_isExpired
+        return self.access_token_expires < now
 
     def get_access_token(self):
+        if self.check_access_token_expiry():
+            self.auth()
+        return self.access_token
+
+    def auth(self):
         if self.client_id is None:
             return False
         token_url = "https://accounts.spotify.com/api/token"
@@ -44,5 +46,4 @@ class Client:
         now = datetime.datetime.now()
         expires_in = data['expires_in']
         self.access_token_expires = now + datetime.timedelta(seconds=expires_in)
-        self.check_expiry()
         return True
