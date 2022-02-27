@@ -4,3 +4,4 @@
 *.pyc
 client_info.txt
 *.txt
+.cache
