@@ -3,4 +3,5 @@
 *.iml
 *.pyc
 .cache
-client_secret.json
+client_secret2.json
+client_info.txt
