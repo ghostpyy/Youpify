@@ -5,7 +5,7 @@ import googleapiclient.discovery
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-SLEEP_INTERVAL = 1
+SLEEP_INTERVAL = 3
 TOP_TRACK_CNT = 20
 
 
@@ -27,7 +27,7 @@ def spotify_init(f):
 def youtube_init():
     api_service_name = "youtube"
     api_version = "v3"
-    client_secrets_file = "client_secret.json"
+    client_secrets_file = "client_secret2.json"
     scopes = ["https://www.googleapis.com/auth/youtube"]
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
         client_secrets_file, scopes
@@ -58,13 +58,17 @@ def get_top_spotify_ids(sp):
     return song_ids
 
 
-def get_tracks_spotify_playlist(sp, playlist_id):
+def get_tracks_spotify_playlist(sp, playlist_id, limit):
+    cnt = 0
     tracks = []
     playlist_tracks = sp.playlist_items(playlist_id=playlist_id, additional_types=["track"])
     for track in playlist_tracks['items']:
         track_name = track['track']['name']
         track_artist_name = track['track']['artists'][0]['name']
         tracks.append((track_name, track_artist_name))
+        cnt += 1
+        if cnt == limit:
+            break
     return tracks
 
 
@@ -91,7 +95,6 @@ def create_new_yt_playlist(yt, playlist_title):
     return response_create_playlist['id']
 
 
-# TO:DO check
 def add_to_yt_playlist(yt, playlist_id, tracks):
     for track in tracks:
         request_song = yt.search().list(
@@ -120,7 +123,7 @@ def add_to_yt_playlist(yt, playlist_id, tracks):
 
 
 def conv_playlist_spotify_youtube(sp, yt, playlist_id, playlist_name):
-    tracks = get_tracks_spotify_playlist(sp, playlist_id)
+    tracks = get_tracks_spotify_playlist(sp, playlist_id, limit=10)
     yt_playlist_id = create_new_yt_playlist(yt, playlist_name)
     add_to_yt_playlist(yt, yt_playlist_id, tracks)
 
