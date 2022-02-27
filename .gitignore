@@ -4,3 +4,4 @@
 *.pyc
 client_info.txt
 .cache
+client_secret.json
