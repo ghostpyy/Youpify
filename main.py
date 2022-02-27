@@ -1,10 +1,11 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+import ytmusicapi
 
 
 def spotify_init():
     scope = 'user-top-read'
-    f = open('client_info2.txt', 'r')
+    f = open('client_info.txt', 'r')
     CLIENT_ID = f.readline().strip()
     CLIENT_SECRET = f.readline().strip()
     REDIRECT_URI = f.readline().strip()
@@ -22,7 +23,7 @@ def spotify_init():
 def main():
     sp = spotify_init()
     r = sp.current_user_top_tracks(20, 0, "medium_term")
-    d = []
+    top_tracks = []
     for track in r['items']:
         track_name = track['name']
         track_artist_name = track['artists'][0]['name']
