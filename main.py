@@ -44,19 +44,11 @@ def main():
     for track in spotify_request['items']:
         track_name = track['name']
         track_artist_name = track['artists'][0]['name']
-        print(track_name, track_artist_name, sep=' - ')
+        top_tracks.append((track_name, track_artist_name))
 
     yt = youtube_init()
     song_ids = []
-    for track in top_tracks:
-        request = yt.search().list(
-            part="snippet",
-            maxResults=1,
-            q="arstarst"
-        )
-        response = request.execute()
-
-    request = yt.playlists().insert(
+    create_playlist = yt.playlists().insert(
         part="snippet,status",
         body={
             "snippet": {
@@ -67,12 +59,30 @@ def main():
             "status": {
                 "privacyStatus": "private"
             },
-            # "id": song_ids
         }
     )
-    response = request.execute()
-
-    print(response)
+    response_create_playlist = create_playlist.execute()
+    print(response_create_playlist)
+    for track in top_tracks:
+        request_song = yt.search().list(
+            part="snippet",
+            maxResults=1,
+            q=track[0] + ' ' + track[1]
+        )
+        song_response = request_song.execute()
+        add_video_request = yt.playlistItems().insert(
+            part="snippet,status",
+            body={
+                'snippet': {
+                    'playlistId': response_create_playlist['id'],
+                    'resourceId': {
+                        'kind': 'youtube#video',
+                        'videoId': song_response['items'][0]['id']['videoId']
+                    }
+                }
+            }
+        )
+        add_video_request.execute()
 
 
 if __name__ == '__main__':
