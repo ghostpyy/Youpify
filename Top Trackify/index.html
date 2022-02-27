@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify to Youtube Playlist Converter</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body> 
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" href="index.html">You<span1>Tube</span1><span>      Spotify</span></a>
+            <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="Open navigation">
+            <nav>
+                <img id="mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="Close navigation">
+                <ul class="primary-nav">
+                    <li class="current"><a href="index.html">Home</a></li>
+                    <li><a href="#">Create an Account</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+                <ul class="secondary-nav">
+                    <li id="rawr"><a class="logo2" href="#">Contact<span id="wow"> Us</span></a></li>
+                    <li class="go-premium"><a href="#">Go<span id = "wow2"> Premium</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <section class="hero"> 
+        <div class="container">
+            <div class="left-col">
+                <p class="subhead" id = "uci" onclick="clickH()">UCI Hackathon 2022</p>
+                <h1><span3>Spotify</span3> to You<span4>Tube</span4> Playlist Converter</h1>
+                <div class="hero-cta">
+                    <a href="tryNow.html" class="primary-cta">Try now</a>
+                </div>
+            </div>
+                <img src="images/applespotify.png" class="hero-img" alt="illustrations">
+        </div>
+    </section>
+    <section class="features-section">
+        <div class="container">
+            <ul class="features-list">
+                <li>Website built from Javascript, Flask, SCSS, & HTML</li>
+                <li>Software using Python</li>
+                <li>Makes the playlist making process much more easier among different music applications</li>
+                <li>Additional Feature</li>
+                <li>&emsp;Displays user's top 20 songs on Spotify</li>
+                <li>Benefits:</li>
+                <li>&emsp;Saves you time and time is money :)</li>
+                <li>&emsp;Lets you quickly find banger songs</li>
+            </ul>
+        </div>
+    </section>      
+    <section class="testimonials-section">
+        <div class="container">
+            <ul>
+                <li>
+                    <img src="images/Profile/keshi.jpg" alt="Person1">
+                    <blockquote>"Amazing"</blockquote>
+                    <cite>Joshua</cite>
+                </li>
+                <li>
+                    <img src="images/Profile/ichigo.jpg" alt="Person2">
+                    <blockquote>"Phenomenal"</blockquote>
+                    <cite>Vance</cite>
+                </li>
+                <li>
+                    <img src="images/Profile/beserk.jpg" alt="Person3">
+                    <blockquote>"Good job"</blockquote>
+                    <cite>Kenneth</cite>
+                </li>
+                <li>
+                    <img src="images/Profile/SLW.jpg" alt="Person4">
+                    <blockquote>"Big Trust"</blockquote>
+                    <cite>Shawn</cite>
+                </li>
+                <li>
+                    <img src="images/Profile/evil.jpg" alt="Person5">
+                    <blockquote>"One of a kind"</blockquote>
+                    <cite>Andrew</cite>
+                </li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
+
+<script>
+    let test = document.getElementById("wow");
+
+    test.addEventListener("mouseover", function( event ) 
+    {
+    // highlight the mouseover target
+    event.target.style.color = "red";
+    }, false);
+
+    test.addEventListener("mouseleave", function(event)
+    {
+        event.target.style.color="";
+    }, true);
+ </script>
+
+ <script>
+    let test1 = document.getElementById("wow2");
+    test1.addEventListener("mouseover", function( event ) 
+    {
+    // highlight the mouseover target
+    event.target.style.color = "red";
+    }, false);
+
+    test1.addEventListener("mouseleave", function(event)
+    {
+        event.target.style.color="";
+    }, true);
+ </script>
+
+  <script>
+    let test2 = document.getElementById("uci");
+    test2.addEventListener("mouseover", function( event ) 
+    {
+    // highlight the mouseover target
+    event.target.style.color = "red";
+    }, false);
+
+    test2.addEventListener("mouseleave", function(event)
+    {
+        event.target.style.color="";
+    }, true);
+ </script>
+
+ <script>
+     function clickH()
+     {
+         location.replace("https://www.hackuci.com/");
+     }
+ </script>
