@@ -1,6 +1,14 @@
-pip install -r requirements.txt
 
+``pip install -r requirements.txt``
 ![logo](https://github.com/ghostpyy/Youpify/blob/main/Top%20Trackify%20website/images/original.png)
+
+
+# Top Trackify
+
+**Features**
+- Convert your top Spotify Tracks to a YouTube playlist
+- Convert your top Spotify Tracks to a Spotify playlist
+- Convert any Spotify playlist to a YouTube playlist
 
 ## Inspiration
 
@@ -32,3 +40,6 @@ The next thing we would do with Top Trackify is to combine the UI elements with 
 
 ## Built With
 css/html, javascript, python, scss
+
+
+created for HackUCI 2022
